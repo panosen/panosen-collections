@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panosen.Collections", "Panosen.Collections\Panosen.Collections.csproj", "{BF61EE27-403E-48B9-A828-B77423D8C633}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panosen.Collections.MSTest", "Panosen.Collections.MSTest\Panosen.Collections.MSTest.csproj", "{3F910403-6216-41D8-8BD5-A520C9032B3E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF61EE27-403E-48B9-A828-B77423D8C633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF61EE27-403E-48B9-A828-B77423D8C633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF61EE27-403E-48B9-A828-B77423D8C633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF61EE27-403E-48B9-A828-B77423D8C633}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F910403-6216-41D8-8BD5-A520C9032B3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F910403-6216-41D8-8BD5-A520C9032B3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F910403-6216-41D8-8BD5-A520C9032B3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F910403-6216-41D8-8BD5-A520C9032B3E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4A3AA4D-EC2C-4D3A-A25C-1B5D80171A8D}
+	EndGlobalSection
+EndGlobal

@@ -13,7 +13,7 @@ namespace Panosen.Collections.Generic
     {
         private int version;
 
-        private Dictionary<TRow, Dictionary<TCol, TValue>> maps = new Dictionary<TRow, Dictionary<TCol, TValue>>();
+        private readonly Dictionary<TRow, Dictionary<TCol, TValue>> maps = new Dictionary<TRow, Dictionary<TCol, TValue>>();
 
         /// <summary>
         /// 添加键值对
@@ -227,7 +227,7 @@ namespace Panosen.Collections.Generic
         public class Enumerator : IEnumerator<MatrixCell<TRow, TCol, TValue>>
         {
             private Matrix<TRow, TCol, TValue> map;
-            private int version;
+            private readonly int version;
 
             /// <summary>
             /// 遍历外层字典

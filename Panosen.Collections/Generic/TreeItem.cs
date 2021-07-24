@@ -53,6 +53,11 @@ namespace Panosen.Collections.Generic
                 treeItem.Children = new List<TreeItem<TData>>();
             }
 
+            if (treeItem.Children.Contains(child))
+            {
+                return;
+            }
+
             child.Parent = treeItem;
             treeItem.Children.Add(child);
         }

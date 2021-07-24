@@ -35,67 +35,66 @@ namespace Panosen.Collections.MSTest
             treeItem7.AddTo(treeItem4);
             treeItem8.AddTo(treeItem6);
 
-            var roots = tree.GetRoots();
-            Assert.IsNotNull(roots);
-            Assert.AreEqual(1, roots.Count);
-
-            Assert.IsNull(treeItem1.Parent);
-            Assert.IsNotNull(treeItem2.Parent);
-            Assert.IsNotNull(treeItem3.Parent);
-            Assert.IsNotNull(treeItem4.Parent);
-            Assert.IsNotNull(treeItem5.Parent);
-            Assert.IsNotNull(treeItem6.Parent);
-            Assert.IsNotNull(treeItem7.Parent);
-            Assert.IsNotNull(treeItem8.Parent);
-
-            Assert.IsNull(treeItem3.Children);
-            Assert.IsNull(treeItem5.Children);
-            Assert.IsNull(treeItem7.Children);
-            Assert.IsNull(treeItem8.Children);
-
-            Assert.IsNotNull(treeItem1.Children);
-            Assert.IsNotNull(treeItem2.Children);
-            Assert.IsNotNull(treeItem4.Children);
-            Assert.IsNotNull(treeItem6.Children);
-
-            Assert.AreEqual(2, treeItem1.Children.Count);
-            Assert.AreEqual(2, treeItem2.Children.Count);
-            Assert.AreEqual(2, treeItem4.Children.Count);
-            Assert.AreEqual(1, treeItem6.Children.Count);
-
+            Assert(tree, treeItem1, treeItem2, treeItem3, treeItem4, treeItem5, treeItem6, treeItem7, treeItem8);
         }
 
         [TestMethod]
         public void TestMethod2()
         {
+            /*
+             * 1 => 2 => 3
+             * 1 => 2 => 4 => 5
+             * 1 => 2 => 4 => 7
+             * 1 => 6 => 8
+             */
             Tree<int> tree = new Tree<int>();
 
-            tree.AddTreeItemChain(1, 2, 3, 4);
+            TreeItem<int> treeItem1 = new TreeItem<int> { Data = 1 };
+            TreeItem<int> treeItem2 = new TreeItem<int> { Data = 2 };
+            TreeItem<int> treeItem3 = new TreeItem<int> { Data = 3 };
+            TreeItem<int> treeItem4 = new TreeItem<int> { Data = 4 };
+            TreeItem<int> treeItem5 = new TreeItem<int> { Data = 5 };
+            TreeItem<int> treeItem6 = new TreeItem<int> { Data = 6 };
+            TreeItem<int> treeItem7 = new TreeItem<int> { Data = 7 };
+            TreeItem<int> treeItem8 = new TreeItem<int> { Data = 8 };
 
-            Assert.IsNotNull(tree.TreeItemList);
-            Assert.AreEqual(4, tree.TreeItemList.Count);
+            tree.AddTreeItemChain(treeItem1, treeItem2, treeItem3);
+            tree.AddTreeItemChain(treeItem1, treeItem2, treeItem4, treeItem5);
+            tree.AddTreeItemChain(treeItem1, treeItem2, treeItem4, treeItem7);
+            tree.AddTreeItemChain(treeItem1, treeItem6, treeItem8);
 
-            Assert.AreEqual(1, tree.TreeItemList[0].Data);
-            Assert.AreEqual(2, tree.TreeItemList[1].Data);
-            Assert.AreEqual(3, tree.TreeItemList[2].Data);
-            Assert.AreEqual(4, tree.TreeItemList[3].Data);
+            Assert(tree, treeItem1, treeItem2, treeItem3, treeItem4, treeItem5, treeItem6, treeItem7, treeItem8);
+        }
 
-            Assert.IsNotNull(tree.TreeItemList[0].Children);
-            Assert.IsNotNull(tree.TreeItemList[1].Children);
-            Assert.IsNotNull(tree.TreeItemList[2].Children);
-            Assert.IsNull(tree.TreeItemList[3].Children);
+        private static void Assert(Tree<int> tree, TreeItem<int> treeItem1, TreeItem<int> treeItem2, TreeItem<int> treeItem3, TreeItem<int> treeItem4, TreeItem<int> treeItem5, TreeItem<int> treeItem6, TreeItem<int> treeItem7, TreeItem<int> treeItem8)
+        {
+            var roots = tree.GetRoots();
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(roots);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(1, roots.Count);
 
-            Assert.AreEqual(1, tree.TreeItemList[0].Children.Count);
-            Assert.AreEqual(1, tree.TreeItemList[0].Children.Count);
-            Assert.AreEqual(1, tree.TreeItemList[0].Children.Count);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNull(treeItem1.Parent);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(treeItem2.Parent);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(treeItem3.Parent);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(treeItem4.Parent);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(treeItem5.Parent);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(treeItem6.Parent);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(treeItem7.Parent);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(treeItem8.Parent);
 
-            Assert.AreEqual(tree.TreeItemList[1].Parent, tree.TreeItemList[0]);
-            Assert.AreEqual(tree.TreeItemList[2].Parent, tree.TreeItemList[1]);
-            Assert.AreEqual(tree.TreeItemList[3].Parent, tree.TreeItemList[2]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNull(treeItem3.Children);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNull(treeItem5.Children);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNull(treeItem7.Children);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNull(treeItem8.Children);
 
-            Assert.AreEqual(tree.TreeItemList[0].Children[0], tree.TreeItemList[1]);
-            Assert.AreEqual(tree.TreeItemList[1].Children[0], tree.TreeItemList[2]);
-            Assert.AreEqual(tree.TreeItemList[2].Children[0], tree.TreeItemList[3]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(treeItem1.Children);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(treeItem2.Children);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(treeItem4.Children);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(treeItem6.Children);
+
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(2, treeItem1.Children.Count);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(2, treeItem2.Children.Count);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(2, treeItem4.Children.Count);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(1, treeItem6.Children.Count);
         }
     }
 }

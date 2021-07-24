@@ -118,46 +118,6 @@ namespace Panosen.Collections.Generic
         /// <summary>
         /// AddTreeItem
         /// </summary>
-        public static Tree<TData> AddTreeItemChain<TData>(this Tree<TData> tree, params TData[] datas)
-        {
-            if (datas == null || datas.Length == 0)
-            {
-                return tree;
-            }
-
-            if (tree.TreeItemList == null)
-            {
-                tree.TreeItemList = new List<TreeItem<TData>>();
-            }
-
-            var treeItems = datas.Select(v => new TreeItem<TData> { Data = v }).ToList();
-
-            return AddTreeItemChain(tree, treeItems);
-        }
-
-        /// <summary>
-        /// AddTreeItem
-        /// </summary>
-        public static Tree<TData> AddTreeItemChain<TData>(this Tree<TData> tree, List<TData> datas)
-        {
-            if (datas == null || datas.Count == 0)
-            {
-                return tree;
-            }
-
-            if (tree.TreeItemList == null)
-            {
-                tree.TreeItemList = new List<TreeItem<TData>>();
-            }
-
-            var treeItems = datas.Select(v => new TreeItem<TData> { Data = v }).ToList();
-
-            return AddTreeItemChain(tree, treeItems);
-        }
-
-        /// <summary>
-        /// AddTreeItem
-        /// </summary>
         public static Tuple<TreeItem<TData>, TreeItem<TData>> AddTreeItem<TData>(this Tree<TData> tree, TData treeItemData, TData parentTreeItemData)
         {
             if (tree.TreeItemList == null)

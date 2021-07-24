@@ -48,21 +48,54 @@ namespace Panosen.Collections.MSTest
             Assert.IsNotNull(treeItem7.Parent);
             Assert.IsNotNull(treeItem8.Parent);
 
-            Assert.IsNull(treeItem3.Childen);
-            Assert.IsNull(treeItem5.Childen);
-            Assert.IsNull(treeItem7.Childen);
-            Assert.IsNull(treeItem8.Childen);
+            Assert.IsNull(treeItem3.Children);
+            Assert.IsNull(treeItem5.Children);
+            Assert.IsNull(treeItem7.Children);
+            Assert.IsNull(treeItem8.Children);
 
-            Assert.IsNotNull(treeItem1.Childen);
-            Assert.IsNotNull(treeItem2.Childen);
-            Assert.IsNotNull(treeItem4.Childen);
-            Assert.IsNotNull(treeItem6.Childen);
+            Assert.IsNotNull(treeItem1.Children);
+            Assert.IsNotNull(treeItem2.Children);
+            Assert.IsNotNull(treeItem4.Children);
+            Assert.IsNotNull(treeItem6.Children);
 
-            Assert.AreEqual(2, treeItem1.Childen.Count);
-            Assert.AreEqual(2, treeItem2.Childen.Count);
-            Assert.AreEqual(2, treeItem4.Childen.Count);
-            Assert.AreEqual(1, treeItem6.Childen.Count);
+            Assert.AreEqual(2, treeItem1.Children.Count);
+            Assert.AreEqual(2, treeItem2.Children.Count);
+            Assert.AreEqual(2, treeItem4.Children.Count);
+            Assert.AreEqual(1, treeItem6.Children.Count);
 
+        }
+
+        [TestMethod]
+        public void TestMethod2()
+        {
+            Tree<int> tree = new Tree<int>();
+
+            tree.AddTreeItemChain(1, 2, 3, 4);
+
+            Assert.IsNotNull(tree.TreeItemList);
+            Assert.AreEqual(4, tree.TreeItemList.Count);
+
+            Assert.AreEqual(1, tree.TreeItemList[0].Data);
+            Assert.AreEqual(2, tree.TreeItemList[1].Data);
+            Assert.AreEqual(3, tree.TreeItemList[2].Data);
+            Assert.AreEqual(4, tree.TreeItemList[3].Data);
+
+            Assert.IsNotNull(tree.TreeItemList[0].Children);
+            Assert.IsNotNull(tree.TreeItemList[1].Children);
+            Assert.IsNotNull(tree.TreeItemList[2].Children);
+            Assert.IsNull(tree.TreeItemList[3].Children);
+
+            Assert.AreEqual(1, tree.TreeItemList[0].Children.Count);
+            Assert.AreEqual(1, tree.TreeItemList[0].Children.Count);
+            Assert.AreEqual(1, tree.TreeItemList[0].Children.Count);
+
+            Assert.AreEqual(tree.TreeItemList[1].Parent, tree.TreeItemList[0]);
+            Assert.AreEqual(tree.TreeItemList[2].Parent, tree.TreeItemList[1]);
+            Assert.AreEqual(tree.TreeItemList[3].Parent, tree.TreeItemList[2]);
+
+            Assert.AreEqual(tree.TreeItemList[0].Children[0], tree.TreeItemList[1]);
+            Assert.AreEqual(tree.TreeItemList[1].Children[0], tree.TreeItemList[2]);
+            Assert.AreEqual(tree.TreeItemList[2].Children[0], tree.TreeItemList[3]);
         }
     }
 }

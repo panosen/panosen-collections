@@ -21,7 +21,7 @@ namespace Panosen.Collections.Generic
         /// <summary>
         /// 子级
         /// </summary>
-        public List<TreeItem<TData>> Childen { get; set; }
+        public List<TreeItem<TData>> Children { get; set; }
     }
 
     /// <summary>
@@ -34,13 +34,13 @@ namespace Panosen.Collections.Generic
         /// </summary>
         public static void AddTo<TData>(this TreeItem<TData> treeItem, TreeItem<TData> treeItemParent)
         {
-            if (treeItemParent.Childen == null)
+            if (treeItemParent.Children == null)
             {
-                treeItemParent.Childen = new List<TreeItem<TData>>();
+                treeItemParent.Children = new List<TreeItem<TData>>();
             }
 
             treeItem.Parent = treeItemParent;
-            treeItemParent.Childen.Add(treeItem);
+            treeItemParent.Children.Add(treeItem);
         }
 
         /// <summary>
@@ -48,13 +48,13 @@ namespace Panosen.Collections.Generic
         /// </summary>
         public static void AddChild<TData>(this TreeItem<TData> treeItem, TreeItem<TData> child)
         {
-            if (treeItem.Childen == null)
+            if (treeItem.Children == null)
             {
-                treeItem.Childen = new List<TreeItem<TData>>();
+                treeItem.Children = new List<TreeItem<TData>>();
             }
 
             child.Parent = treeItem;
-            treeItem.Childen.Add(child);
+            treeItem.Children.Add(child);
         }
     }
 }

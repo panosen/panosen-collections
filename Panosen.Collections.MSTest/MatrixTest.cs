@@ -5,7 +5,7 @@ using System.Text;
 namespace Panosen.Collections.MSTest
 {
     [TestClass]
-    public class UnitTest1
+    public class MatrixTest
     {
         [TestMethod]
         public void TestMethod1()

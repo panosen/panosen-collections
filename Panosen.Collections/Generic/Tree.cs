@@ -62,62 +62,6 @@ namespace Panosen.Collections.Generic
         /// <summary>
         /// AddTreeItem
         /// </summary>
-        public static Tree<TData> AddTreeItemChain<TData>(this Tree<TData> tree, params TreeItem<TData>[] treeItems)
-        {
-            if (treeItems == null || treeItems.Length == 0)
-            {
-                return tree;
-            }
-
-            if (tree.TreeItemList == null)
-            {
-                tree.TreeItemList = new List<TreeItem<TData>>();
-            }
-
-            for (int i = 0; i < treeItems.Length; i++)
-            {
-                AddTreeItem(tree, treeItems[i]);
-
-                if (i < treeItems.Length - 1)
-                {
-                    treeItems[i].AddChild(treeItems[i + 1]);
-                }
-            }
-
-            return tree;
-        }
-
-        /// <summary>
-        /// AddTreeItem
-        /// </summary>
-        public static Tree<TData> AddTreeItemChain<TData>(this Tree<TData> tree, List<TreeItem<TData>> treeItems)
-        {
-            if (treeItems == null || treeItems.Count == 0)
-            {
-                return tree;
-            }
-
-            if (tree.TreeItemList == null)
-            {
-                tree.TreeItemList = new List<TreeItem<TData>>();
-            }
-
-            for (int i = 0; i < treeItems.Count; i++)
-            {
-                AddTreeItem(tree, treeItems[i]);
-
-                if (i < treeItems.Count - 1)
-                {
-                    treeItems[i].AddChild(treeItems[i + 1]);
-                }
-            }
-
-            return tree;
-        }
-
-        /// <summary>
-        /// AddTreeItem
-        /// </summary>
         public static Tuple<TreeItem<TData>, TreeItem<TData>> AddTreeItem<TData>(this Tree<TData> tree, TData treeItemData, TData parentTreeItemData)
         {
             if (tree.TreeItemList == null)
@@ -177,6 +121,62 @@ namespace Panosen.Collections.Generic
             foreach (var treeItem in treeItems)
             {
                 AddTreeItem(tree, treeItem);
+            }
+
+            return tree;
+        }
+
+        /// <summary>
+        /// AddTreeItem
+        /// </summary>
+        public static Tree<TData> AddTreeItemChain<TData>(this Tree<TData> tree, params TreeItem<TData>[] treeItems)
+        {
+            if (treeItems == null || treeItems.Length == 0)
+            {
+                return tree;
+            }
+
+            if (tree.TreeItemList == null)
+            {
+                tree.TreeItemList = new List<TreeItem<TData>>();
+            }
+
+            for (int i = 0; i < treeItems.Length; i++)
+            {
+                AddTreeItem(tree, treeItems[i]);
+
+                if (i < treeItems.Length - 1)
+                {
+                    treeItems[i].AddChild(treeItems[i + 1]);
+                }
+            }
+
+            return tree;
+        }
+
+        /// <summary>
+        /// AddTreeItem
+        /// </summary>
+        public static Tree<TData> AddTreeItemChain<TData>(this Tree<TData> tree, List<TreeItem<TData>> treeItems)
+        {
+            if (treeItems == null || treeItems.Count == 0)
+            {
+                return tree;
+            }
+
+            if (tree.TreeItemList == null)
+            {
+                tree.TreeItemList = new List<TreeItem<TData>>();
+            }
+
+            for (int i = 0; i < treeItems.Count; i++)
+            {
+                AddTreeItem(tree, treeItems[i]);
+
+                if (i < treeItems.Count - 1)
+                {
+                    treeItems[i].AddChild(treeItems[i + 1]);
+                }
             }
 
             return tree;

@@ -166,27 +166,7 @@ namespace Panosen.Collections.Generic
             }
             set
             {
-                if (key == null)
-                {
-                    throw new ArgumentNullException(nameof(key));
-                }
-                if (subKey == null)
-                {
-                    throw new ArgumentNullException(nameof(subKey));
-                }
-
-                if (maps.ContainsKey(key) && maps[key].ContainsKey(subKey))
-                {
-                    throw new ArgumentException($"已经存在 {nameof(key)}.{nameof(subKey)} 相同的元素");
-                }
-
-                if (!maps.ContainsKey(key))
-                {
-                    maps.Add(key, new Dictionary<TCol, TValue>());
-                }
-
-                maps[key].Add(subKey, value);
-                version++;
+                Add(key, subKey, value);
             }
         }
 

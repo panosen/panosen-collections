@@ -16,7 +16,7 @@ namespace Panosen.Collections.MSTest
             matrix.Add(2, 1, "c");
             matrix.Add(2, 2, "d");
 
-            Assert.AreEqual(4, matrix.Count);
+            Assert.AreEqual(4, matrix.Count());
 
             StringBuilder builder = new StringBuilder();
             var enumerator = matrix.GetEnumerator();
@@ -27,10 +27,10 @@ namespace Panosen.Collections.MSTest
             }
             Assert.AreEqual("1-1-a;1-2-b;2-1-c;2-2-d;", builder.ToString());
 
-            Assert.AreEqual("a", matrix[1, 1]);
-            Assert.AreEqual("b", matrix[1, 2]);
-            Assert.AreEqual("c", matrix[2, 1]);
-            Assert.AreEqual("d", matrix[2, 2]);
+            Assert.AreEqual("a", matrix.GetValue(1, 1));
+            Assert.AreEqual("b", matrix.GetValue(1, 2));
+            Assert.AreEqual("c", matrix.GetValue(2, 1));
+            Assert.AreEqual("d", matrix.GetValue(2, 2));
         }
     }
 }

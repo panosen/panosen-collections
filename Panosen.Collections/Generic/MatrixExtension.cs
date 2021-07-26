@@ -55,7 +55,7 @@ namespace Panosen.Collections.Generic
                 throw new ArgumentNullException(nameof(subKey));
             }
 
-            if (matrix.Maps.ContainsKey(key)&& matrix.Maps[key].ContainsKey(subKey))
+            if (matrix.Maps.ContainsKey(key) && matrix.Maps[key].ContainsKey(subKey))
             {
                 throw new ArgumentException($"已经存在 {nameof(key)}.{nameof(subKey)} 相同的元素");
             }
@@ -144,6 +144,19 @@ namespace Panosen.Collections.Generic
         public static MatrixEnumerator<TRow, TCol, TValue> GetEnumerator<TRow, TCol, TValue>(this Matrix<TRow, TCol, TValue> matrix)
         {
             return new MatrixEnumerator<TRow, TCol, TValue>(matrix);
+        }
+
+        /// <summary>
+        /// GetValue
+        /// </summary>
+        public static List<TValue> GetValues<TRow, TCol, TValue>(this Matrix<TRow, TCol, TValue> matrix, TRow row)
+        {
+            if (!matrix.Maps.ContainsKey(row))
+            {
+                return default;
+            }
+
+            return matrix.Maps[row].Values.ToList();
         }
 
         /// <summary>

@@ -139,14 +139,6 @@ namespace Panosen.Collections.Generic
         }
 
         /// <summary>
-        /// GetEnumerator
-        /// </summary>
-        public static MatrixEnumerator<TRow, TCol, TValue> GetEnumerator<TRow, TCol, TValue>(this Matrix<TRow, TCol, TValue> matrix)
-        {
-            return new MatrixEnumerator<TRow, TCol, TValue>(matrix);
-        }
-
-        /// <summary>
         /// GetValue
         /// </summary>
         public static List<TValue> GetValues<TRow, TCol, TValue>(this Matrix<TRow, TCol, TValue> matrix, TRow row)

@@ -9,7 +9,7 @@ namespace Panosen.Collections.Generic
     /// Dictionary&lt;TKey1, Dictionary&lt;TKey2, TValue&gt;&gt;
     /// 参考 https://referencesource.microsoft.com/#mscorlib/system/collections/generic/dictionary.cs,cc27fcdd81291584
     /// </summary>
-    public class Matrix<TRow, TCol, TValue>
+    public partial class Matrix<TRow, TCol, TValue>
     {
         /// <summary>
         /// 每次有增加或者删除元素，都会触发数字自增

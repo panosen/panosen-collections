@@ -9,17 +9,17 @@ namespace Panosen.Collections.Generic
     /// It is used by the IEnumerable&lt;T&gt; implementation for both IMap&lt;TKey, TSubKey, TValue&gt;
     /// and IReadOnlyMap&lt;TKey, TSubKey, TValue&gt;.
     /// </summary>
-    public readonly struct MatrixCell<TKey, TSubKey, TValue>
+    public readonly struct MatrixCell<TRow, TCol, TValue>
     {
         /// <summary>
         /// Key
         /// </summary>
-        public TKey Key { get; }
+        public TRow Row { get; }
 
         /// <summary>
         /// SubKey
         /// </summary>
-        public TSubKey SubKey { get; }
+        public TCol Col { get; }
 
         /// <summary>
         /// Value
@@ -29,10 +29,10 @@ namespace Panosen.Collections.Generic
         /// <summary>
         /// KeysValuePair
         /// </summary>
-        public MatrixCell(TKey key, TSubKey subKey, TValue value)
+        public MatrixCell(TRow row, TCol col, TValue value)
         {
-            this.Key = key;
-            this.SubKey = subKey;
+            this.Row = row;
+            this.Col = col;
             this.Value = value;
         }
     }

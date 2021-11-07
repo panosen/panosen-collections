@@ -1,5 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Panosen.Collections.Generic;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Panosen.Collections.MSTest
@@ -23,7 +25,7 @@ namespace Panosen.Collections.MSTest
             while (enumerator.MoveNext())
             {
                 var current = enumerator.Current;
-                builder.Append($"{current.Key}-{current.SubKey}-{current.Value};");
+                builder.Append($"{current.Row}-{current.Col}-{current.Value};");
             }
             Assert.AreEqual("1-1-a;1-2-b;2-1-c;2-2-d;", builder.ToString());
 
@@ -31,6 +33,9 @@ namespace Panosen.Collections.MSTest
             Assert.AreEqual("b", matrix.GetValue(1, 2));
             Assert.AreEqual("c", matrix.GetValue(2, 1));
             Assert.AreEqual("d", matrix.GetValue(2, 2));
+
+            var cell = matrix.FirstOrDefault(v => v.Row == 1 && v.Col == 2);
+            Assert.AreEqual("b", cell.Value);
         }
     }
 }

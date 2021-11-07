@@ -14,58 +14,58 @@ namespace Panosen.Collections.Generic
         /// <summary>
         /// ContainsKey
         /// </summary>
-        public static bool ContainsKey<TRow, TCol, TValue>(this Matrix<TRow, TCol, TValue> matrix, TRow key, TCol subKey)
+        public static bool ContainsKey<TRow, TCol, TValue>(this Matrix<TRow, TCol, TValue> matrix, TRow row, TCol col)
         {
             if (matrix == null)
             {
                 throw new ArgumentNullException(nameof(matrix));
             }
-            if (key == null)
+            if (row == null)
             {
-                throw new ArgumentNullException(nameof(key));
+                throw new ArgumentNullException(nameof(row));
             }
-            if (subKey == null)
+            if (col == null)
             {
-                throw new ArgumentNullException(nameof(subKey));
+                throw new ArgumentNullException(nameof(col));
             }
 
-            if (!matrix.Maps.ContainsKey(key))
+            if (!matrix.Maps.ContainsKey(row))
             {
                 return false;
             }
 
-            return matrix.Maps[key].ContainsKey(subKey);
+            return matrix.Maps[row].ContainsKey(col);
         }
 
         /// <summary>
         /// 添加键值对
         /// </summary>
-        public static void Add<TRow, TCol, TValue>(this Matrix<TRow, TCol, TValue> matrix, TRow key, TCol subKey, TValue value)
+        public static void Add<TRow, TCol, TValue>(this Matrix<TRow, TCol, TValue> matrix, TRow row, TCol col, TValue value)
         {
             if (matrix == null)
             {
                 throw new ArgumentNullException(nameof(matrix));
             }
-            if (key == null)
+            if (row == null)
             {
-                throw new ArgumentNullException(nameof(key));
+                throw new ArgumentNullException(nameof(row));
             }
-            if (subKey == null)
+            if (col == null)
             {
-                throw new ArgumentNullException(nameof(subKey));
-            }
-
-            if (matrix.Maps.ContainsKey(key) && matrix.Maps[key].ContainsKey(subKey))
-            {
-                throw new ArgumentException($"已经存在 {nameof(key)}.{nameof(subKey)} 相同的元素");
+                throw new ArgumentNullException(nameof(col));
             }
 
-            if (!matrix.Maps.ContainsKey(key))
+            if (matrix.Maps.ContainsKey(row) && matrix.Maps[row].ContainsKey(col))
             {
-                matrix.Maps.Add(key, new Dictionary<TCol, TValue>());
+                throw new ArgumentException($"已经存在 {nameof(row)}.{nameof(col)} 相同的元素");
             }
 
-            matrix.Maps[key].Add(subKey, value);
+            if (!matrix.Maps.ContainsKey(row))
+            {
+                matrix.Maps.Add(row, new Dictionary<TCol, TValue>());
+            }
+
+            matrix.Maps[row].Add(col, value);
             matrix.Version++;
         }
 
@@ -109,24 +109,24 @@ namespace Panosen.Collections.Generic
         /// <summary>
         /// 尝试获取一个值
         /// </summary>
-        public static bool TryGetValue<TRow, TCol, TValue>(this Matrix<TRow, TCol, TValue> matrix, TRow key, TCol subKey, out TValue value)
+        public static bool TryGetValue<TRow, TCol, TValue>(this Matrix<TRow, TCol, TValue> matrix, TRow row, TCol col, out TValue value)
         {
-            if (key == null)
+            if (row == null)
             {
-                throw new ArgumentNullException(nameof(key));
+                throw new ArgumentNullException(nameof(row));
             }
-            if (subKey == null)
+            if (col == null)
             {
-                throw new ArgumentNullException(nameof(subKey));
+                throw new ArgumentNullException(nameof(col));
             }
 
-            if (!matrix.Maps.ContainsKey(key) || !matrix.Maps[key].ContainsKey(subKey))
+            if (!matrix.Maps.ContainsKey(row) || !matrix.Maps[row].ContainsKey(col))
             {
                 value = default;
                 return false;
             }
 
-            value = matrix.Maps[key][subKey];
+            value = matrix.Maps[row][col];
             return true;
         }
 

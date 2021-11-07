@@ -36,6 +36,9 @@ namespace Panosen.Collections.MSTest
 
             var cell = matrix.FirstOrDefault(v => v.Row == 1 && v.Col == 2);
             Assert.AreEqual("b", cell.Value);
+
+            var empty = matrix.FirstOrDefault(v => v.Row == 2 && v.Col == 3);
+            Assert.IsNull(empty);
         }
     }
 }

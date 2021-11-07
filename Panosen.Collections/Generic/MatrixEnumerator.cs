@@ -39,8 +39,6 @@ namespace Panosen.Collections.Generic
             this.version = matrix.Version;
 
             rowEnumerator = matrix.Maps.GetEnumerator();
-
-            current = new MatrixCell<TRow, TCol, TValue>();
         }
 
         #region IEnumerator<MatrixCell<TRow, TCol, TValue>> Members

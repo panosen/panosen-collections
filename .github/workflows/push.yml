@@ -21,5 +21,3 @@ jobs:
       run: dotnet build --no-restore -c Release
     - name: Test
       run: dotnet test
-    - name: Publish Nuget Panosen.Collections
-      run: dotnet nuget push Panosen.Collections/bin/Release/Panosen.Collections.*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.PANOSEN_NUGET_API_KEY}} --skip-duplicate
